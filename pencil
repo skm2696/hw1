@@ -1,0 +1,43 @@
+<html>
+<body>
+	<script>
+		function onMousedown(event){
+			penflag = 1;
+			ctx.fillStyle = '#33FF00';
+			ctx.fillRect(event.offsetX, event.offsetY, 3, 3);
+			}
+		function onMouseup(event){
+			penflag = 0;
+			ctx.fillStyle = '#33FF00';
+			ctx.fillRect(event.offsetX, event.offsetY, 3, 3);
+			}
+		function onMousemove(event){
+			if (penflag==1) {
+			ctx.fillStyle = '#33FF00';
+			ctx.fillRect(event.offsetX, event.offsetY, 3, 3);}
+			}
+		
+	</script>
+	<canvas id='lab01' height='1000' width='1000'>
+		<script>
+			var canvas = document.getElementById('lab01');
+			var ctx = canvas.getContext('2d');
+			var penflag = 0;
+			canvas.addEventListener('mousemove', onMousemove);
+			canvas.addEventListener('mousedown', onMousedown);
+			canvas.addEventListener('mouseup', onMouseup);
+			ctx.fillStyle = '#7B68EE';
+			ctx.fillRect(10, 10, 500, 500);
+			var arr = new Array(1000);
+			for (i=0; i<1000; i++) {
+				if (i<=500|| i>=800) arr[i] = 1;
+				else arr[i] = 0;
+			}
+			ctx.fillStyle = '#bb0000';
+			for(i=0; i<1000; i++){
+				if(arr[i] == 1)
+					ctx.fillRect(i, i, 1, 1);
+			}
+		</script>
+	</canvas>
+</body>
